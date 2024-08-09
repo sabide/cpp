@@ -99,82 +99,48 @@ Quelle classe de la librairie standard faudrait-il utiliser à la place du table
 7. Prenez note des difficultés que vous avez rencontrées durant cet exercice et de comment vous les avez surmontées.
  
 
-## Exercice 2 - Premières erreurs (1h)
+## Exercice 2 - Erreur des grands nombres (30 min)
+
+On cherche à calculer la solution du problème de Cauchy suivant 
+$$y^\prime(t) = 3 y(t)−1, t \in [0,10]$$
+avec la condition initiales données par $y(0) = 13$.
+1. Donner la solution exacte de ce problème de Cauchy.
+2. On considère à present le même problème mais avec une perutbation de la condition initiale $y_{\epsilon}(0) = 13 + \epsilon$ Calculer à l’aide d’un code en C la différence $y_{\epsilon}(10) − y(10)$. Commenter.
 
 > [!IMPORTANT]
 > Pensez à commiter vos changements à la fin de chaque question.
 > Ainsi, si vous souhaitez annuler vos modifications pour revenir au code enregistré à la fin de la question précédente, vous pourrez le faire.
 
-1. Ajoutez un fichier "Person.hpp" dans le répertoire [ex2](ex2) et copiez dedans le code ci-dessous :
-```cpp
-class Person
-{
-public:
-    std::string first_name;
-    std::string surname;
-};
-```
+## Exercice 3 - Les tableaux (1h)
 
-2. Dans le fichier [main.cpp](ex2/main.cpp), ajoutez une fonction `main`.  
-A l'intérieur, instanciez un objet de type `Person` et modifiez ses attributs afin que son prénom soit "Palluche" et son nom de famille "La Faluche".  
-Enfin, ajoutez les instructions permettant d'afficher "La personne s'appelle Palluche La Faluche" (en utilisant les attributs de l'objet bien sûr).
+Dans cet exercice on se propose de manipuler des tableaux de rang 1 (avec 1 seul indice) à l'aide de plusieurs approches.
+### Contexte
+La dérivation numérique consiste à évaluer une dérivée $f^\prime(x)$ à partir de la donnée $f_i=f(x_i)$.
+Les fonctions et les dérivées sont évaluées sur les coordonnées $X=\{x_i = i h, 0 \le i \le n \}$ avec $h=1/n$.
+La dérivée seconde peut s'évaluer à l'aide de la relation:
+$$
+f_i^{\prime\prime} = \frac{f_{i+1}-2f_{i}+f_{i-1}}{h^2}, \quad 0 \lt i \lt n
+$$
+Dans ce qui suit, on se propose d'implanter cette fonctionnalité avec différentes approches pour la gestion des tableaux.  
 
-3. Essayez de compiler le programme. Modifiez les fichiers [main.cpp](ex2/main.cpp) et [Person.hpp](ex2/Person.hpp) afin de corriger les erreurs si vous en avez.  
-*Indice : pensez à inclure les headers de **TOUS** les symboles que vous avez utilisés !*  
+0. Ecrire sur papier l'algorithme pour réaliser la fonction demandée.  
 
-4. Ajoutez un fichier "Person.cpp" dans le répertoire [ex2](ex2).
-Modifiez le code de la classe `Person` de manière à rendre ses attributs privés : ajoutez un constructeur pour les initialiser et deux getters pour les récupérer. Vous placerez l'implémentation de ces fonctions dans le fichier .cpp.  
-Compilez le fichier "Person.cpp" pour générer le fichier-object associé.  
-Si vous avez des erreurs de syntaxe, essayez de comprendre le message du compilateur pour les corriger.
+### Version pointeurs
+Dans un premier temps on code sans dévalarer de fonctions.
 
-5. Modifiez le fichier "main.cpp" de façon à prendre en compte les modifications de la classe `Person`. Compilez ensuite le programme complet.
+1. Dans un fichier `main.cpp` allouer un tableau de taille $n$ et initialiser ses éléments.
+2. Coder le tableau $X=\{x_i = i h, 0 \le i \le n \}$. 
+3. Coder le tableau $F=\{f_i = \sin ( 2\pi \omega x_i ), 0 \le i \le n \}$.
+4. Coder le tableau $F^{\prime\prime}= \{ f_i^{\prime \prime} =  \left(f_{i+1}-2f_{i}+f_{i-1}\right)/h^2, 0 \lt i \lt n \}$.
+5. Calculer l'erreur maximum commise sur l'appoximation de la dérivée.
 
-6. Supprimez le contenu de la fonction `main`. A la place, instanciez un tableau dynamique de `Person`.  
-Modifiez ensuite le programme afin que l'utilisateur puisse entrer le nombre de personnes qu'il désire ajouter au tableau, puis le nom complet de chacune de ses personnes. A la fin, le programme affiche le prénom et le nom de tout le monde.
+Une fois votre code fonctionnel utiliser des fonctions pour faciliter la lecture et la modularité de votre code.
 
-*Exemple :*  
-```bash
-Nombre de personnes: 3  
-Prenom: Aa  
-Nom: Bb  
-Prenom: Cc  
-Nom: Dd  
-Prenom: Ee  
-Nom: Ff  
-Les personnes sont Aa Bb, Cc Dd, Ee Ff.
-```
+### Version array
+1. Reprendre la question précédente en substituant les pointeurs par 
 
-7. Prenez note des difficultés que vous avez rencontrées durant cet exercice et de comment vous les avez surmontées.
-
-## Exercice 3 - Questions (30 min)
-
-A faire avec l'ensemble du groupe.  
-Pensez à prendre des notes pour les donner à vos camarades absents.
-
-1. Parlez de vos différents blocages avec le restant de la classe et discutez des solutions.
-
-2. Expliquez la différence entre phase de build (compilation) et phase de link (édition des liens).  
-En quoi consiste la précompilation et à quel moment est-elle effectuée ?
-
-3. Que signifient les messages suivants ?  
-a. error: 'qqchose' was not declared in this scope  
-b. error: 'qqchose' is not a member of 'std'  
-Ces erreurs se produisent-elles pendant la phase de build ou de link ?  
-Que fait exactement l'instruction préprocesseur `#include` et pourquoi permet-elle généralement de résoudre ce type de problème ?
-
-4. Compilez le programme de l'exercice en ne linkant que le fichier-objet associé à `main.cpp` (c'est-à-dire en oubliant `utils.cpp`).  
-Quelle est l'erreur qui s'affiche ?    
-En quoi est-elle différente des erreurs de la question précédente ?  
-Expliquez ce qu'elle signifie exactement.
-
-5. Décommentez maintenant les instructions commentées des fichiers [main.cpp](ex3/main.cpp) et [utils.hpp](ex3/utils.hpp).  
-Compilez maintenant le programme complet (avec les modules main et utils).  
-Quelle est l'erreur qui s'affiche ? S'agit-il d'une erreur de build ou de link ?  
-Pourquoi se produit-elle ?  
-Que faudrait-il faire pour la résoudre ?
-
-6. Ajoutez le mot-clef `inline` devant la définition de la fonction `print_bye` dans [utils.hpp](ex3/utils.hpp). Que constatez-vous quand vous réessayez de compiler le programme ?  
-Selon-vous, quel est l'effet du mot-clef `inline` sur le linker ?
+### Version array
+2. Reprendre la question précédente en array par xxx
 
 ## Pour terminer
 
