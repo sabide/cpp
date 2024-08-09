@@ -125,22 +125,23 @@ Dans ce qui suit, on se propose d'implanter cette fonctionnalité avec différen
 
 0. Ecrire sur papier l'algorithme pour réaliser la fonction demandée.  
 
-### Version pointeurs
+### Version pointeurs `type *`
 Dans un premier temps on code sans dévalarer de fonctions.
 
 1. Dans un fichier `main.cpp` allouer un tableau de taille $n$ et initialiser ses éléments.
 2. Coder le tableau $X=\{x_i = i h, 0 \le i \le n \}$. 
-3. Coder le tableau $F=\{f_i = \sin ( 2\pi \omega x_i ), 0 \le i \le n \}$.
+3. Coder le tableau $F=\{f_i = - \sin ( 2\pi x_i )/(4\pi^2), 0 \le i \le n \}$.
 4. Coder le tableau $F^{\prime\prime}= \{ f_i^{\prime \prime} =  \left(f_{i+1}-2f_{i}+f_{i-1}\right)/h^2, 0 \lt i \lt n \}$.
 5. Calculer l'erreur maximum commise sur l'appoximation de la dérivée.
 
 Une fois votre code fonctionnel utiliser des fonctions pour faciliter la lecture et la modularité de votre code.
 
-### Version array
-1. Reprendre la question précédente en substituant les pointeurs par 
+### Version `array`
+6. Reprendre la question précédente en substituant les pointeurs par le type [`array`](https://en.cppreference.com/w/cpp/container/array).
+7. Commenter les différences avec la version pointeur. 
 
-### Version array
-2. Reprendre la question précédente en array par xxx
+### Version `vector`
+8. Reprendre la question précédente en array par [`vector`](https://en.cppreference.com/w/cpp/container/vector).
 
 ## Pour terminer
 
