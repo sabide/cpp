@@ -1,0 +1,16 @@
+#include <iostream>
+
+class polynom
+{
+private:
+  double coeff_[5];
+  
+public:
+  void print(ostream& stream);
+protected:
+  
+};
+
+void polynom::print(ostream& stream){
+
+}
