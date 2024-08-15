@@ -2,8 +2,7 @@
 
 using namespace std;
 
-class polynom
-{
+class polynom {
   
 private:
   double coeff_[5] = {1,0,-3,4,5};

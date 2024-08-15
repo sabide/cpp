@@ -1,0 +1,17 @@
+# notes sur les polynomes
+
+## le concept à modéliser
+un polynôme de degré $n$ est de la forme $P(x)=\sum^n_{i=0} a_i x^i$.
+## données caractérisant ce concept
+dans Q1/main.cpp
+   1- classe polynome avec coeffs_[5] pour poly degres 5.
+   2- initialisation dans main.cpp
+## méthode pour affichage d'un monome.
+   on créera le fichier Polynome.cpp
+   3- printMonome(ostream& os, double coeff, int deg):
+      on souhaite afficher sour la forme : sign()*coeff x^deg
+   4- void print(ostream& os)
+   
+
+
+

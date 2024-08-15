@@ -1,0 +1,21 @@
+  
+bool Polynome::printMonome(ostream& os, double a, int deg){
+  bool monomeNull = true ; 
+  if (a != 0.0)
+    {
+      os << ( (a<0) ? '-' : '+' ) ; // signe du monome
+      if (a<0.0) a = -a ;
+      if (a !=1 || deg==0 ) os<< a ;
+      if ( deg >0 ) os << 'x' ;
+      if ( deg >1 ) os << '^' << deg ;
+    }
+  return monomeNull ;
+}
+
+void Polynome::print(ostream& stream){
+  for(int i=0;i<5;++i)
+    printMonome(stream, this->coeff_[i],i);
+  cout << endl;
+}
+
+
