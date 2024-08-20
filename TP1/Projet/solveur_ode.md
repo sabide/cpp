@@ -6,18 +6,18 @@ Les équations de Lotka-Volterra modélisent la dynamique de population dans un 
 
 Le système d'équations différentielles ordinaires (EDO) est donné par :
 
-\[
+$$
 \frac{dx}{dt} = \alpha x - \beta x y
-\]
+$$
 
-\[
+$$
 \frac{dy}{dt} = \delta x y - \gamma y
-\]
+$$
 
 où :
-- \( x(t) \) représente la population de proies à un instant \( t \).
-- \( y(t) \) représente la population de prédateurs à un instant \( t \).
-- \( \alpha, \beta, \gamma, \delta \) sont des paramètres positifs du modèle.
+- $ x(t) $ représente la population de proies à un instant $t$.
+- $ y(t) $ représente la population de prédateurs à un instant $t$.
+- $ \alpha, \beta, \gamma, \delta $ sont des paramètres positifs du modèle.
 
 ## Objectif
 
@@ -27,13 +27,13 @@ L'objectif de cet exercice est de résoudre le système d'équations de Lotka-Vo
 
 1. **Paramètres du problème :**
    - Fixez les paramètres du modèle aux valeurs suivantes :
-     - \( \alpha = 1.0 \)
-     - \( \beta = 0.1 \)
-     - \( \gamma = 1.5 \)
-     - \( \delta = 0.075 \)
+     - $ \alpha = 1.0$
+     - $ \beta = 0.1 $
+     - $ \gamma = 1.5 $
+     - $ \delta = 0.075 $
    - Initialisez les populations de départ des proies et des prédateurs :
-     - \( x_0 = 10.0 \)
-     - \( y_0 = 5.0 \)
+     - $ x_0 = 10.0 $
+     - $ y_0 = 5.0 $
 
 2. **Méthode d'Euler explicite :**
    - Implémentez une fonction `euler_explicit` qui résout le système d'équations en utilisant la méthode d'Euler explicite.
@@ -86,7 +86,8 @@ L'objectif de cet exercice est de résoudre le système d'équations de Lotka-Vo
 
 ## Remise du travail
 
-- Envoyez votre programme C++ sous la forme d'un fichier `.cpp`.
-- Incluez également les fichiers .dat générés.
+- Rédiger le document markdown.
+- Déposez votre programme C++ sous la forme d'un fichier `.cpp`.
+- Inclure également les fichiers .dat générés.
 - Si vous avez réalisé le bonus, incluez également les fichiers graphiques générés par GNUplot.
 
