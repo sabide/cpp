@@ -3,7 +3,7 @@
 ## Objectifs
 
 - Ecrire un programme basique en C++
-- Commiter et revenir en arrière avec Git
+%- Commiter et revenir en arrière avec Git
 - Compiler un programme constitué de plusieurs fichiers sources
 - Utiliser la librairie standard
 
