@@ -6,9 +6,9 @@
 ### Contexte :
 La dérivation numérique consiste à évaluer une dérivée seconde \( f''(x) \) à partir des valeurs discrètes \( f_i = f(x_i) \) où les coordonnées sont définies par \( X = \{x_i = ih, 0 \leq i \leq n\} \) avec \( h = 1/n \). La dérivée seconde peut être approchée par la relation suivante :
 
-\[
+$$
 f''_i = \frac{f_{i+1} - 2f_i + f_{i-1}}{h^2}, \quad 0 < i < n
-\]
+$$
 
 Dans ce projet, vous allez implémenter cette approximation en utilisant différentes techniques de gestion des tableaux.
 
