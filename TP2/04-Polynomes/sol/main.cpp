@@ -22,6 +22,7 @@ int main(void)
   cout << "-P :\t " << -P << endl ;
   cout << "1+Q :\t " << 1+Q << endl ;
   cout << "P+Q :\t " << P+Q << endl ;
+  
   cout << "Evaluation de P en 1 :\t " << P(1.) << endl ;
   cout << "Evaluation de Q en 1 :\t " << Q(1.) << endl ;
   cout << "P-Q :\t " << P-Q << endl ;

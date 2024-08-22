@@ -1,0 +1,196 @@
+\documentclass{article}
+%\documentclass[mien,ps,slideColor,colorBG,accumulate]{prosper}
+%\documentclass[defautl,ps,slideBW,nocolorBG,accumulate]{prosper}
+%\usepackage{fancyvrb}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+%\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings,amsmath,amsfonts}
+\usepackage[ruled]{algorithm}
+\usepackage{algorithmicx}
+%\usepackage{algorithm,algorithmicx,algpseudocode}
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill \# {\scriptsize #1}} 
+\algnewcommand\algorithmicinput{\textbf{Input:}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algodesc{\textbf{Description:}}
+\algnewcommand\Desc{\item[\algodesc]}
+\algnewcommand\algouse{\textbf{Usage:}}
+\algnewcommand\Use{\item[\algouse]}
+\makeatletter
+\newcommand{\algrule}[1][.2pt]{\par\vskip.5\baselineskip\hrule height #1\par\vskip.5\baselineskip}
+\makeatother
+\usepackage{layout,dsfont}
+%\usepackage{pstricks,pst-plot,pst-node,pst-tree,epsfig,amsfonts,amsmath,amssymb,pst-grad}
+%\usepackage{lstpatch}
+\usepackage{url,relsize}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[toc,page]{appendix}
+\def\CC{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\relsize{-3}{\textbf{++}}}}
+\def\gxx{g\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\relsize{-3}{\textbf{++}}}}
+\def\stdcxx{-std=c\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\relsize{-3}{\textbf{++}}}11}
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\DP}[2]{\dsp\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\be}{\begin{eqnarray*}}
+\newcommand{\ee}{\end{eqnarray*}}
+\definecolor{BlueGrey}{rgb}{0.8,0.9,0.9}
+\def\R{\mbox{I\hspace{-0.05cm}R}}
+%\def \R{\mathbb{R}}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{magenta}\ttfamily,
+                commentstyle=\color{red}\ttfamily%,
+%                morecomment=[l][\color{magenta}]{\#}
+}
+
+  \begin{document}
+\definecolor{grey}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgreen}{rgb}{0.000000,0.392157,0.000000}
+\definecolor{purple}{rgb}{0.627451,0.125490,0.941176}
+\begin{minipage}{410pt}
+\begin{minipage}{230pt}
+\begin{flushleft}
+{\bf{M1 IM-MF/MPA\\
+Université Côte d'Azur\
+\vphantom{Session 1}}}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{180pt}
+\begin{flushright}
+{\bf{POO\\
+    2022-23\\
+TP11 \ (TP {\CC} n°6)}}
+\end{flushright}
+\end{minipage}
+\end{minipage}\\
+%\title{TD1}
+%\tableofcontents
+\begin{center}
+%\centerline{\big{TD1}}
+\Large{\bf{TP11 POO - \CC}}\\[10pt]
+\normalsize{{\bf{{gilles.scarella@univ-cotedazur.fr, simon.girel@univ-cotedazur.fr}}}}
+\end{center}
+{\bf{Consignes:\\}}
+\begin{itemize}
+\item[$\bullet$] Pour compiler et exécuter le code de l'exercice 1, on exécutera dans le terminal
+\begin{verbatim}
+g++ main_sort.cpp -o main_sort
+./main_sort
+\end{verbatim}
+\item[$\bullet$] Pour l'exercice 2, vous pouvez exécuter ce qui suit dans le terminal, afin de compiler uniquement le code de la classe \textit{Cercle}:
+\begin{verbatim}
+g++ -c Cercle.cpp
+\end{verbatim}
+Pour compiler la totalité du code et l'exécuter, taper:
+\begin{verbatim}
+g++ main.cpp Point2D.cpp Rot.cpp Mat22.cpp Cercle.cpp -o exo2
+./exo2
+\end{verbatim}
+%\item[$\bullet$] Pour compiler le code, on exécutera dans le terminal\\
+%  \rm{{\gxx} main.cpp Data.cpp Neurone.cpp -o Neurone.exe}\\
+%Pour tester le code, après l'avoir compilé avec la {méthode} précédente, on exécutera dans le terminal\\
+%\rm{./Neurone.exe}
+\end{itemize}
+\section{Exercice sur les fonctions et classes Template}
+On se propose d'implémenter un algorithme de tri sur des tableaux de type
+générique. Pour cela, on va utiliser un des algorithmes de tri les plus simples (loin
+d'être le plus performant !) appelé "tri à bulle".\\
+\noindent Le pseudo code de cet algorithme est disponible dans le lien suivant (c'est le 1er algo de la page):\\
+\noindent Source Wikipédia : \url{http://fr.wikipedia.org/wiki/Tri\_à\_bulles}
+\subsection{Fonction MySwap}
+\begin{itemize}
+\item Pour cela, dans un fichier \textit{MySort.hpp}, commencer à écrire une fonction patron \textit{MySwap} sur un type générique T, prenant en paramètre deux références de ce type T, et échangeant leur valeur.
+\item Tester dans une fonction \textit{main} définie dans le fichier \textit{main\_sort.cpp}, sur au moins deux types.
+\end{itemize}
+  \subsection{Fonction MySort}
+\begin{itemize}
+\item Ecrire une fonction \textit{MySort} implémentant l'algorithme présenté dans le lien Wikipédia. Ce sera une fonction template sur un type générique T, prenant en paramètre un
+pointeur sur ce type, ainsi que la longueur de ce tableau (un entier).
+%Il faudra ici faire un choix sur la façon dont on trie ce tableau .. Du plus petit au plus grand ou l'inverse, en fonction du résultat de l'opérateur de comparaison utilisé dans l'algorithme.
+
+\item Tester cette fonction de tri dans le fichier \textit{main\_sort.cpp} avec des tableaux de type divers : un tableau d'entiers, de réels et de chaînes de caractères (\textit{string}) (pour les \textit{string}, on ajoutera {\rm{\#include<string>}} au début du fichier contenant le \textit{main}).
+\item {[FACULTATIF]} Tester \textit{MySort} sur la classe template \textit{MyPaire} décrite en annexe, à la fin du sujet du TP.
+\end{itemize}
+\section{Héritage et polymorphisme}
+
+Récupérer sur Moodle, dans le dossier \textit{TP11},  les fichiers \textit{Mat22.cpp}, \textit{Mat22.hh}, \textit{Point2D.cpp}, \textit{Point2D.hh}, \textit{Rot.cpp} et \textit{Rot.hh}.\\
+\noindent Ces fichiers contiennent la définition de la classe \textit{Rot}, modélisant les rotations dans $\R^²$ et qui s'utilise comme suit:
+\begin{verbatim}
+const double PI = 3.141592653589793238463;
+Rot r(PI/4); // Rotation de PI/4  
+Point2D P = {1,0};  // Point dans R^2
+Point2D Q = r(P);   // on obtient Q = {sqrt(2)/2, sqrt(2)/2};
+\end{verbatim}
+\subsection{La classe Forme}
+Nous allons déclarer une classe abstraite \textit{Forme} de laquelle hériteront les formes auxquelles nous appliquerons une matrice de rotation.
+
+\noindent Dans un fichier \textit{Forme.hh}, déclarer une classe \textit{Forme}, qui ne contiendra pas de données membres et qui contiendra les deux fonctions \textbf{membres publiques virtuelles pures} suivantes (les fonctions membres d'une classe abstraite ne peuvent être que virtuelles pures)
+\begin{itemize}
+\item Une fonction \textit{to\_str} renvoyant une valeur de type \textit{string} et ne prenant rien en paramètre.
+\item Une fonction \textit{apply\_rot} ne renvoyant rien et prenant une référence constante sur un objet de type \textit{Rot} en paramètre.
+\end{itemize}
+  Comme la classe \textit{Forme} ne contient que des fonctions virtuelles pures, il n'y a pas de fonction à définir et par conséquent pas de fichier .cpp
+\subsection{La classe Cercle}   
+Dans un fichier \textit{Cercle.hh}, déclarer une classe \textit{Cercle} héritant publiquement de la classe \textit{Forme} déclarée lors de la question précédente.\\
+\noindent Cette classe aura deux données membres privées :
+\begin{itemize}
+\item Un objet de type \textit{Point2D} appelé \textit{\_centre}
+\item Un double appelé \textit{\_rayon}
+\end{itemize}
+  Cette classe aura deux fonctions membres définissant les fonctions virtuelles pures de la classe \textit{Forme} et de même prototype que celles-ci.
+\begin{itemize}
+\item   La fonction \textit{to\_str} devra renvoyer une chaîne de caractères décrivant le cercle
+\item   La fonction \textit{apply\_rot} appliquera une matrice de rotation reçue en paramètre à l'objet \textit{\_centre}, de type \textit{Point2D}.
+\end{itemize}
+  \subsection{La fonction main}
+\begin{itemize}
+\item  Dans la fonction \textit{main} du fichier \textit{main.cpp}, déclarer une variable $v$ où $v$ est un tableau de 2 pointeurs sur \textit{Forme}, comme suit:
+\begin{verbatim}
+Forme* v[2];
+\end{verbatim}
+Le premier élément de $v$, $v[0]$ pointera  vers un objet de type \textit{Cercle}, par exemple de centre (1, 0) et de rayon 2.
+Faire afficher cet élément de $v$ en utilisant la fonction \textit{to\_str} de la classe \textit{Forme}, puis appliquer à cet élément la matrice de rotation correspondant à l'objet $r$ et le réafficher.\\
+\noindent Attention : Les éléments de $v$ sont des pointeurs ! Pour appeler les fonctions membres des objets pointés, il faudra utiliser l'opérateur $\rightarrow$.
+\end{itemize}
+
+\begin{itemize}
+\item {[FACULTATIF]} Créer une classe \textit{Carre}, ressemblant à la classe \textit{Cercle} et héritant de \textit{Forme}, possédant l'attribut privé \textit{\_pts}, tableau de 4 \textit{Point2D}, pour les sommets du carré.\\
+  \noindent $v[1]$ pointera alors vers un objet de type \textit{Carre}, par exemple de centre (0.5, 0.5) et de côté 1. Faire le même traitement que pour $v[0]$.
+\end{itemize}
+\clearpage
+\appendix
+\section*{Annexe}
+\subsection*{Classe Template MyPaire (exercice 1)}
+Ce qui suit devra être écrit dans un fichier \textit{MyPaire.hpp} (on rappelle que pour les templates, les déclarations  et  définitions  doivent  être  écrites dans un unique fichier dont l'extension demandée est \textit{.hpp}) \\
+%\begin{itemize}
+%\item
+  La classe \textit{MyPaire} est une classe template sur deux types $T$ et $U$. La clé sera du type $T$ et la valeur sera du type $U$.\\
+\noindent Les paires sont des structures de données très utilisées lorsqu'on souhaite associer une valeur  à  une  clé.  Cela  permet, par exemple, de créer des tableaux associatifs pour lesquels les valeurs ne sont plus  indexées  par des entiers (comme c'est le cas dans les tableaux classiques que 
+nous connaissons déjà) mais par des clés dont le type est libre.
+%\end{itemize}
+\begin{itemize}
+\item Sa déclaration pourrait donc être la suivante : 
+\begin{verbatim}
+template <typename T, typename U> 
+class MyPaire { ....} ; 
+\end{verbatim}
+%\begin{itemize} 
+\item Le  couple  clé/valeur sera  déclaré  en tant que  données membres privées  avec les types $T$ et $U$ respectivement. 
+%\end{itemize}
+\item  Les fonctions publiques seront : 
+\begin{itemize} 
+\item[$\circ$] Un constructeur ne prenant rien en paramètre et ne faisant rien. 
+\item[$\circ$] Un constructeur prenant deux paramètres, une clé de type $T$ et une valeur de type $U$. 
+\item[$\circ$] Une surcharge de l'opérateur $<$ permettant de savoir si un objet de type \textit{MyPaire} reçu en paramètre (son type sera \textit{const MyPaire}\&) est plus grand  que l'instance courante,  au  sens  de  leur  valeur.  Le  type  de  la  valeur de retour sera \textit{bool}. 
+\item[$\circ$] Enfin une fonction amie surchargeant l'opérateur $<<$ afin de pouvoir afficher le couple clé/valeur de notre paire à l'aide de \textit{cout}.
+\end{itemize}
+\end{itemize}
+\end{document}
